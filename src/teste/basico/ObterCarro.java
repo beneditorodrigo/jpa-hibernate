@@ -4,24 +4,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import modelo.basico.Usuario;
+import modelo.basico.Carro;
 
-public class NovoUsuario {
+public class ObterCarro {
 
 	public static void main(String[] args) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exercicios-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-		Usuario novoUsuario = new Usuario("Bene", "bene@lanche.com.br");
+		Carro carro = em.find(Carro.class, 1L);
 		
-		em.getTransaction().begin();
-		em.persist(novoUsuario);
-		em.getTransaction().commit();
-		
-		System.out.println(novoUsuario.getId());
+		System.out.println(carro.getPlaca());
 		
 		em.close();
 		emf.close();
 	}
+
 }
