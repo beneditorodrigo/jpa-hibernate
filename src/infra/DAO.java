@@ -52,14 +52,14 @@ public class DAO<E> {
 	public List<E> obterTodos(){
 		return this.obterTodos(10,0);
 	}
-
+	
 	public List<E> obterTodos(int qtde, int deslocamento) {
 		if (classe == null) {
 			throw new UnsupportedOperationException("Classe nula");
 		}
 
 		String jpql = "select e from " + classe.getName() + " e";
-		TypedQuery<E> query = em.createNamedQuery(jpql, classe);
+		TypedQuery<E> query = em.createQuery(jpql, classe);
 		query.setMaxResults(qtde);
 		query.setFirstResult(deslocamento);
 
