@@ -21,7 +21,7 @@ public class ObterCarros {
 		
 		List<Carro> carros = query.getResultList();
 		
-		for(Carro carro : carros) {
+		for(Carro carro: carros) {
 			System.out.println("ID: " + carro.getId()
 			+ " Placa: " + carro.getPlaca());
 		}

@@ -13,9 +13,14 @@ public class ObterCarro {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exercicios-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-		Carro carro = em.find(Carro.class, 1L);
+		Carro carro = em.find(Carro.class, 3L);
 		
-		System.out.println(carro.getPlaca());
+		if(carro instanceof Carro) {
+			System.out.println("ID: " + carro.getId()
+			+ " Placa: " + carro.getPlaca());
+		} else {
+			System.out.println("ID não encontrado!");
+		}
 		
 		em.close();
 		emf.close();

@@ -4,23 +4,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import modelo.basico.Carro;
+import modelo.basico.Usuario;
 
-public class NovoCarro {
+public class AlterarUsuario1 {
 
 	public static void main(String[] args) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exercicios-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-		Carro carro = new Carro("OBS22A8", 2015, "Renault", "CLIO", "CINZA");
-		
 		em.getTransaction().begin();
-		em.persist(carro);
+		
+		Usuario usuario = em.find(Usuario.class, 7L);
+		
+		if(usuario instanceof Usuario) {
+			usuario.setNome("Benedito");
+			usuario.setEmail("benedito@lanche.com.br");
+			em.merge(usuario);
+		} else {
+			System.out.println("Usuário não encontrado!");
+		}
+		
 		em.getTransaction().commit();
 		
 		em.close();
 		emf.close();
 	}
-
 }
