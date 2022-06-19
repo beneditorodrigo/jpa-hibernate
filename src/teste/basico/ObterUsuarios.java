@@ -18,7 +18,7 @@ public class ObterUsuarios {
 		
 		String jpql = "select u from Usuario u";
 		TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
-		query.setMaxResults(5);
+		query.setMaxResults(10);
 		
 		List<Usuario> usuarios = query.getResultList();
 		
