@@ -48,6 +48,10 @@ public class DAO<E> {
 	public DAO<E> incluirAtomico(E entidade) {
 		return this.abrirT().incluir(entidade).fecharT();
 	}
+	
+	public E obterPorID(Object id) {
+		return em.find(classe, id);
+	}
 
 	public List<E> obterTodos(){
 		return this.obterTodos(10,0);
